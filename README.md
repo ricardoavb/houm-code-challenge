@@ -37,7 +37,7 @@ test/integration/test_pokemon_api.py::test_smallest_and_biggest_pokemon PASSED [
 
 ============================= 3 passed in 46.21s ==============================
 
-## How to run the linter?
+## :mag: How to run the linter?
 
 we use **flake8** and **autopep8** as a linting tools, you can run the linter as follows:
 
@@ -48,3 +48,13 @@ pipenv run flake8 --ignore E501
 
 if everything goes well, it should not show any warnings,
 you can use **autopep8** to auto-fix those warnings
+
+## :octocat: Github Actions
+
+In order to make sure nothing was broken, the **pull_request.yml** workflow
+will run some jobs when creating a new PR
+
+The following jobs will be executed:
+
+1. Linter
+2. Integration test
