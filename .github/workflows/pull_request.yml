@@ -11,6 +11,6 @@ jobs:
         with:
           python-version: '3.8'
       - uses: dschep/install-pipenv-action@v1
-        run: |
+      - run: |
           pipenv install
           pipenv run pytest
