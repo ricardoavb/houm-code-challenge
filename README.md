@@ -21,6 +21,7 @@ then you need to install all the packages and activate your virtual environment:
 
 ```
 pipenv shell
+pipenv install
 ```
 
 we use **pytest** as a test runner, you can run the tests as follows:
