@@ -1,4 +1,1 @@
-class Hello:
-    pass
-
-# POKEMON_API_URL = 'hello testing'
+POKEMON_API_URL = 'https://pokeapi.co/api/v2/'
