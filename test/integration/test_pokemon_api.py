@@ -22,7 +22,7 @@ def test_raichu_compatible_species(pokemon_api_client):
 
 def test_smallest_and_biggest_pokemon(pokemon_api_client):
     """
-    The function should return a list with the weight of both
+    The function should return a list with the weight of both,
     the smallest pokemon and the biggest pokemon i.e. [100, 2]
     """
     weights = pokemon_api_client.get_smallest_and_biggest_pokemon_weight()
