@@ -3,7 +3,7 @@ import requests
 
 
 class PokemonApiClient:
-    
+
     def get_first_generation_pokemon_names(self):
         """
         Returns a list with all the first generation pokemon names
@@ -38,3 +38,22 @@ class PokemonApiClient:
         map_criteria = lambda egg_group: egg_group['name']
         pokemon_egg_groups = list(map(map_criteria, response_data['egg_groups']))
         return len(set(pokemon_egg_groups))
+
+    def get_pokemon_weight_by_name(self, name):
+        """
+        Returns the weight of a given pokemon
+        """
+        resource = f'{POKEMON_API_URL}pokemon/{name}'
+        response = requests.get(resource)
+        response_data = response.json()
+        pokemon_weight = response_data['weight']
+        return pokemon_weight
+
+    def get_smallest_and_biggest_pokemon_weight(self):
+        """
+        Returns a list with the smallest and the biggest pokemon weight
+        """
+        pokemon_names = self.get_first_generation_pokemon_names()
+        pokemon_weights = [self.get_pokemon_weight_by_name(name) for name in pokemon_names]
+        pokemon_weights.sort(reverse=True)
+        return [pokemon_weights[0], pokemon_weights[-1]]
