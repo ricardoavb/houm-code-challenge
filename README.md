@@ -7,7 +7,7 @@ This repository contains the pokemon api test suite
 3. **Flake8** and **autopep8** - linting
 4. **pipenv** - package manager, virtual environment
 
-## How to run the tests locally?
+## :rocket: How to run the tests locally?
 First of all, you will need to install python 3.8
 
 once python is installed, you would need to install pipenv as follows:
@@ -39,7 +39,7 @@ test/integration/test_pokemon_api.py::test_smallest_and_biggest_pokemon PASSED [
 
 ## How to run the linter?
 
-we use **flake8** and **autopep8** you can run the linter as follows:
+we use **flake8** and **autopep8** as a linting tools, you can run the linter as follows:
 
 ```
 pipenv run flake8 --ignore E501
@@ -47,4 +47,4 @@ pipenv run flake8 --ignore E501
 ```
 
 if everything goes well, it should not show any warnings,
-you can use autopep8 to auto-fix the warnings if required
+you can use **autopep8** to auto-fix those warnings
