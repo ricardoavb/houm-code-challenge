@@ -43,7 +43,6 @@ we use **flake8** and **autopep8** as a linting tools, you can run the linter as
 
 ```
 pipenv run flake8 --ignore E501
-
 ```
 
 if everything goes well, it should not show any warnings,
