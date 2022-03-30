@@ -11,5 +11,6 @@ jobs:
         with:
           python-version: '3.8'
       - run: |
-          echo "hello testing"
-          python --version
+         pip install pipenv
+         pipenv shell
+         pytest -v
