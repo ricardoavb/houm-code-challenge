@@ -10,7 +10,7 @@ This repository contains the pokemon api test suite
 ## How to run the project locally?
 First of all, you will need to install python 3.8
 
-once python is installed, you would need to install pipenv:
+once python is installed, you would need to install pipenv as follows:
 
 ```
 cd houm-code-challenge
@@ -28,3 +28,11 @@ we use **pytest** as a test runner, you can run the tests as follows:
 ```
 pipenv run pytest -v
 ```
+
+if everything goes well, you will see a message like this:
+
+test/integration/test_pokemon_api.py::test_pokemon_name_contains_at_and_double_a PASSED [ 33%]
+test/integration/test_pokemon_api.py::test_raichu_compatible_species PASSED [ 66%]
+test/integration/test_pokemon_api.py::test_smallest_and_biggest_pokemon PASSED [100%]
+
+============================= 3 passed in 46.21s ==============================
