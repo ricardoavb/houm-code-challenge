@@ -18,13 +18,16 @@ class PokemonApiClient:
     def get_filtered_first_generation_pokemon_names_matches(self):
         """
         Returns the number of occurrences a list of pokemon names contains
-        both, twice 'a' and 'at', i.e 'raticate' 
+        both, twice 'a' and 'at', i.e 'raticate'
         """
         pokemon_names = self.get_first_generation_pokemon_names()
         target_occurrences = 2
         target_pattern = 'at'
-        filter_criteria = lambda name: name.count('a') == target_occurrences \
-            and target_pattern in name
+
+        def filter_criteria(name):
+            return name.count(
+                'a') == target_occurrences and target_pattern in name
+
         filtered_pokemon_names = list(filter(filter_criteria, pokemon_names))
         return len(filtered_pokemon_names)
 
@@ -35,8 +38,12 @@ class PokemonApiClient:
         resource = f'{POKEMON_API_URL}pokemon-species/{name}'
         response = requests.get(resource)
         response_data = response.json()
-        map_criteria = lambda egg_group: egg_group['name']
-        pokemon_egg_groups = list(map(map_criteria, response_data['egg_groups']))
+
+        def map_criteria(egg_group):
+            return egg_group['name']
+
+        pokemon_egg_groups = list(
+            map(map_criteria, response_data['egg_groups']))
         return len(set(pokemon_egg_groups))
 
     def get_pokemon_weight_by_name(self, name):
@@ -54,6 +61,7 @@ class PokemonApiClient:
         Returns a list with the smallest and the biggest pokemon weight
         """
         pokemon_names = self.get_first_generation_pokemon_names()
-        pokemon_weights = [self.get_pokemon_weight_by_name(name) for name in pokemon_names]
+        pokemon_weights = [self.get_pokemon_weight_by_name(
+            name) for name in pokemon_names]
         pokemon_weights.sort(reverse=True)
         return [pokemon_weights[0], pokemon_weights[-1]]
