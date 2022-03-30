@@ -12,8 +12,8 @@ jobs:
           python-version: '3.8'
       - uses: dschep/install-pipenv-action@v1
       - run: |
-          pipenv install
-          pipenv run flake8
+          pipenv install --dev
+          pipenv run flake8 --ignore E501
 
   integration-tests:
     needs: linter
