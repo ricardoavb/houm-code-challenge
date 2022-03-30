@@ -1,0 +1,29 @@
+name: linter and integration tests
+on:
+  pull_request:
+
+jobs:
+  linter:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v3
+        with:
+          python-version: '3.8'
+      - uses: dschep/install-pipenv-action@v1
+      - run: |
+          pipenv install --dev
+          pipenv run flake8 --ignore E501
+
+  integration-tests:
+    needs: linter
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v3
+        with:
+          python-version: '3.8'
+      - uses: dschep/install-pipenv-action@v1
+      - run: |
+          pipenv install
+          pipenv run pytest
