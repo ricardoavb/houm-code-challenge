@@ -1,9 +1,6 @@
 name: integration tests
 on:
   push:
-    branches:
-      - "main"
-      - "develop"
 
 jobs:
   integration-tests:
