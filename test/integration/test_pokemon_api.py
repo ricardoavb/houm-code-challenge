@@ -3,6 +3,9 @@ import pytest
 
 @pytest.mark.skip
 def test_get_pokemon_type_by_name(pokemon_api_client):
+    """
+    The function should return a list with the corresponding pokemon types
+    """
     pokemon_name = 'kakuna'
     types_list = pokemon_api_client.get_pokemon_type_by_name(pokemon_name)
     expected_types_list = ['bug', 'poison']
@@ -35,6 +38,7 @@ def test_raichu_compatible_species(pokemon_api_client):
     """
     The function should return the number of species (egg groups)
     a given pokemon is compatible with
+    i.e. Raichu can interbreed with either ground pokemon or fairy pokemon
     """
     target_pokemon = 'raichu'
     egg_groups = pokemon_api_client.get_number_of_compatible_species_by_pokemon_name(
