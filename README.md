@@ -6,6 +6,7 @@ This repository contains the pokemon api test suite
 2. **requests** - HTTP client
 3. **Flake8** and **autopep8** - linting
 4. **pipenv** - package manager, virtual environment
+5. **pytest-xdist** - Run your tests in parallel
 
 ## :rocket: How to run the tests locally?
 First of all, you will need to install python 3.8
@@ -28,6 +29,12 @@ we use **pytest** as a test runner, you can run the tests as follows:
 
 ```
 pipenv run pytest -v
+```
+
+in order to speed up the test execution you can run your test in parallel as follows:
+
+```
+pipenv run pytest -n auto
 ```
 
 if everything goes well, you will see a message like this:
