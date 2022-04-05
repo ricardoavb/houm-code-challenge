@@ -10,6 +10,7 @@ autopep8 = "*"
 [packages]
 pytest = "*"
 requests = "*"
+pytest-xdist = "*"
 
 [requires]
 python_version = "3.8"
