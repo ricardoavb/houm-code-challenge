@@ -69,9 +69,10 @@ class PokemonApiClient:
         filtered_pokemon_names = list(filter(filter_criteria, pokemon_names))
         return len(filtered_pokemon_names)
 
-    def get_number_of_egg_groups_by_pokemon_name(self, name):
+    def get_number_of_compatible_species_by_pokemon_name(self, name):
         """
-        Returns the number of species (egg groups) a given pokemon is compatible with
+        Returns the number of species a given pokemon is compatible with
+        i.e. Raichu can interbreed with either ground pokemon or fairy pokemon
         """
         resource = f'{POKEMON_API_URL}pokemon-species/{name}'
         response = requests.get(resource)
