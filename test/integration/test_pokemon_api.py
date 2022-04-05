@@ -35,11 +35,11 @@ def test_raichu_compatible_species(pokemon_api_client):
     assert egg_groups == expected_egg_groups
 
 
-def test_smallest_and_biggest_fighting_pokemon(pokemon_api_client):
+def test_biggest_and_smallest_fighting_pokemon_weight(pokemon_api_client):
     """
     The function should return a list with the weight of both,
-    the smallest pokemon and the biggest pokemon i.e. [1, 4600]
+    the biggest pokemon and the smallest pokemon i.e. [4600, 1]
     """
-    weights = pokemon_api_client.get_smallest_and_biggest_pokemon_weight(pokemon_type='fighting')
-    expected_weights_list = [1, 4600]
+    weights = pokemon_api_client.get_biggest_and_smallest_pokemon_weight(pokemon_type='fighting')
+    expected_weights_list = [4600, 1]
     assert weights == expected_weights_list

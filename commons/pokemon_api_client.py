@@ -90,11 +90,11 @@ class PokemonApiClient:
         pokemon_weight = response_data['weight']
         return pokemon_weight
 
-    def get_smallest_and_biggest_pokemon_weight(self, pokemon_type=None):
+    def get_biggest_and_smallest_pokemon_weight(self, pokemon_type=None):
         """
         Returns a list with the smallest and the biggest pokemon weight
         """
-        pokemon_names = self.get_first_generation_pokemon_names(pokemon_type)
+        pokemon_names = self.get_first_generation_pokemon_names(pokemon_type=pokemon_type)
         pokemon_weights = [self.get_pokemon_weight_by_name(
             name) for name in pokemon_names]
-        return [min(pokemon_weights), max(pokemon_weights)]
+        return [max(pokemon_weights), min(pokemon_weights)]
