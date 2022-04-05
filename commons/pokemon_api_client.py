@@ -4,6 +4,26 @@ import requests
 
 class PokemonApiClient:
 
+    def get_all_pokemon_names(self):
+        """
+        Returns a list with all generations pokemon names
+        """
+        resource = f'{POKEMON_API_URL}pokemon'
+        response = requests.get(resource)
+        response_data = response.json()
+        pokemon_data = response_data['results']
+       
+        while response_data['next']:
+            response_data = requests.get(response_data['next']).json()
+            pokemon_data.extend(response_data['results'])
+
+        def map_criteria(pokemon):
+            return pokemon['name']
+
+        pokemon_names = list(map(map_criteria, pokemon_data))
+        return pokemon_names
+
+
     def get_first_generation_pokemon_names(self):
         """
         Returns a list with all the first generation pokemon names
@@ -12,7 +32,11 @@ class PokemonApiClient:
         response = requests.get(resource)
         response_data = response.json()
         all_pokemon = response_data['results']
-        pokemon_names = list(map(lambda pokemon: pokemon['name'], all_pokemon))
+
+        def map_criteria(pokemon):
+            return pokemon['name']
+
+        pokemon_names = list(map(map_criteria, all_pokemon))
         return pokemon_names
 
     def get_filtered_first_generation_pokemon_names_matches(self):
@@ -63,5 +87,4 @@ class PokemonApiClient:
         pokemon_names = self.get_first_generation_pokemon_names()
         pokemon_weights = [self.get_pokemon_weight_by_name(
             name) for name in pokemon_names]
-        pokemon_weights.sort(reverse=True)
-        return [pokemon_weights[0], pokemon_weights[-1]]
+        return [min(pokemon_weights), max(pokemon_weights)]
