@@ -1,11 +1,13 @@
 import pytest
 
+
 @pytest.mark.skip
 def test_get_pokemon_type_by_name(pokemon_api_client):
     pokemon_name = 'kakuna'
     types_list = pokemon_api_client.get_pokemon_type_by_name(pokemon_name)
     expected_types_list = ['bug', 'poison']
     assert types_list == expected_types_list
+
 
 @pytest.mark.skip
 def test_get_all_pokemon(pokemon_api_client):
@@ -17,14 +19,14 @@ def test_get_all_pokemon(pokemon_api_client):
     assert pokemon_count == expected_pokemon_count
 
 
-@pytest.mark.skip
+# @pytest.mark.skip
 def test_pokemon_name_contains_at_and_double_a(pokemon_api_client):
     """
     The function should return the number of occurrences a list of pokemon names contains
-    both, twice 'a' and 'at', i.e. 'raticate'
+    both, twice 'a' and 'at', i.e. 'raticate' or 'latias'
     """
-    matches = pokemon_api_client.get_filtered_first_generation_pokemon_names_matches()
-    expected_matches = 1
+    matches = pokemon_api_client.get_filtered_pokemon_names_matches()
+    expected_matches = 14
     assert matches == expected_matches
 
 
@@ -40,12 +42,14 @@ def test_raichu_compatible_species(pokemon_api_client):
     expected_egg_groups = 2
     assert egg_groups == expected_egg_groups
 
-#@pytest.mark.skip
+
+@pytest.mark.skip
 def test_biggest_and_smallest_fighting_pokemon_weight(pokemon_api_client):
     """
     The function should return a list with the weight of both,
     the biggest pokemon and the smallest pokemon i.e. [1300, 195]
     """
-    weights = pokemon_api_client.get_biggest_and_smallest_pokemon_weight(pokemon_type='fighting')
+    weights = pokemon_api_client.get_biggest_and_smallest_pokemon_weight(
+        pokemon_type='fighting')
     expected_weights_list = [1300, 195]
     assert weights == expected_weights_list

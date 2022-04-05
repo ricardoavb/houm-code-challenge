@@ -24,11 +24,14 @@ class PokemonApiClient:
         return pokemon_names
 
     def get_pokemon_type_by_name(self, name):
+        """
+        Returns a list with the types a pokemon belongs to
+        """
         resource = f'{POKEMON_API_URL}pokemon/{name}'
         response = requests.get(resource)
         response_data = response.json()
-        return [pokemon_type['type']['name'] for pokemon_type in response_data['types']]
-    
+        return [pokemon_type['type']['name']
+                for pokemon_type in response_data['types']]
 
     def get_first_generation_pokemon_names(self, pokemon_type=None):
         """
@@ -50,7 +53,7 @@ class PokemonApiClient:
                     if pokemon_type in self.get_pokemon_type_by_name(pokemon_name)]
         return pokemon_names
 
-    def get_filtered_first_generation_pokemon_names_matches(self):
+    def get_filtered_pokemon_names_matches(self):
         """
         Returns the number of occurrences a list of pokemon names contains
         both, twice 'a' and 'at', i.e 'raticate'
@@ -95,7 +98,8 @@ class PokemonApiClient:
         """
         Returns a list with the smallest and the biggest pokemon weight
         """
-        pokemon_names = self.get_first_generation_pokemon_names(pokemon_type=pokemon_type)
+        pokemon_names = self.get_first_generation_pokemon_names(
+            pokemon_type=pokemon_type)
         pokemon_weights = [self.get_pokemon_weight_by_name(
             name) for name in pokemon_names]
         return [max(pokemon_weights), min(pokemon_weights)]
