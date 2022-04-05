@@ -31,7 +31,7 @@ we use **pytest** as a test runner, you can run the tests as follows:
 pipenv run pytest -v
 ```
 
-in order to speed up the test execution you can run your test in parallel as follows:
+in order to speed up the test execution you can run your tests in parallel as follows:
 
 ```
 pipenv run pytest -n auto
