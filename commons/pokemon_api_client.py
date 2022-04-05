@@ -29,7 +29,7 @@ class PokemonApiClient:
         response_data = response.json()
         return [pokemon_type['type']['name'] for pokemon_type in response_data['types']]
     
-    
+
     def get_first_generation_pokemon_names(self, pokemon_type=None):
         """
         Returns a list with all the first generation pokemon names
@@ -47,7 +47,7 @@ class PokemonApiClient:
 
         if pokemon_type:
             return [pokemon_name for pokemon_name in pokemon_names
-                    if self.get_pokemon_type_by_name(pokemon_name) == pokemon_type]
+                    if pokemon_type in self.get_pokemon_type_by_name(pokemon_name)]
         return pokemon_names
 
     def get_filtered_first_generation_pokemon_names_matches(self):
