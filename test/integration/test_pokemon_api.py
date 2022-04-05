@@ -15,7 +15,7 @@ def test_get_pokemon_type_by_name(pokemon_api_client):
 @pytest.mark.skip
 def test_get_all_pokemon(pokemon_api_client):
     """
-    The function should return the total number of pokemon (all generations)
+    The function should return the pokemon names (all generations)
     """
     expected_pokemon_count = 1126
     pokemon_count = len(pokemon_api_client.get_all_pokemon_names())
