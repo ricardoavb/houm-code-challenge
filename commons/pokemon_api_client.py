@@ -23,9 +23,16 @@ class PokemonApiClient:
         pokemon_names = list(map(map_criteria, pokemon_data))
         return pokemon_names
 
-    def get_first_generation_pokemon_names(self):
+    def get_pokemon_type_by_name(name):
+        resource = f'{POKEMON_API_URL}type/{name}'
+        response = requests.get(resource)
+        response_data = response.json()
+        return response_data['name']
+
+    def get_first_generation_pokemon_names(self, pokemon_type=None):
         """
         Returns a list with all the first generation pokemon names
+        you can filter them by 'type'
         """
         resource = f'{POKEMON_API_URL}pokemon?limit=151'
         response = requests.get(resource)
@@ -36,6 +43,10 @@ class PokemonApiClient:
             return pokemon['name']
 
         pokemon_names = list(map(map_criteria, all_pokemon))
+
+        if pokemon_type:
+            return [pokemon_name for pokemon_name in pokemon_names
+                    if self.get_pokemon_type_by_name(pokemon_name) == pokemon_type]
         return pokemon_names
 
     def get_filtered_first_generation_pokemon_names_matches(self):
@@ -43,7 +54,7 @@ class PokemonApiClient:
         Returns the number of occurrences a list of pokemon names contains
         both, twice 'a' and 'at', i.e 'raticate'
         """
-        pokemon_names = self.get_first_generation_pokemon_names()
+        pokemon_names = self.get_all_pokemon_names()
         target_occurrences = 2
         target_pattern = 'at'
 
@@ -79,11 +90,11 @@ class PokemonApiClient:
         pokemon_weight = response_data['weight']
         return pokemon_weight
 
-    def get_smallest_and_biggest_pokemon_weight(self):
+    def get_smallest_and_biggest_pokemon_weight(self, pokemon_type=None):
         """
         Returns a list with the smallest and the biggest pokemon weight
         """
-        pokemon_names = self.get_first_generation_pokemon_names()
+        pokemon_names = self.get_first_generation_pokemon_names(pokemon_type)
         pokemon_weights = [self.get_pokemon_weight_by_name(
             name) for name in pokemon_names]
         return [min(pokemon_weights), max(pokemon_weights)]
