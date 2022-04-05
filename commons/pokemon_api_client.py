@@ -23,12 +23,13 @@ class PokemonApiClient:
         pokemon_names = list(map(map_criteria, pokemon_data))
         return pokemon_names
 
-    def get_pokemon_type_by_name(name):
-        resource = f'{POKEMON_API_URL}type/{name}'
+    def get_pokemon_type_by_name(self, name):
+        resource = f'{POKEMON_API_URL}pokemon/{name}'
         response = requests.get(resource)
         response_data = response.json()
-        return response_data['name']
-
+        return [pokemon_type['type']['name'] for pokemon_type in response_data['types']]
+    
+    
     def get_first_generation_pokemon_names(self, pokemon_type=None):
         """
         Returns a list with all the first generation pokemon names
