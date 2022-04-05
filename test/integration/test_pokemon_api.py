@@ -1,5 +1,6 @@
 import pytest
 
+
 def test_get_all_pokemon(pokemon_api_client):
     """
     The function should return the total number of pokemon (all generations)
@@ -7,6 +8,7 @@ def test_get_all_pokemon(pokemon_api_client):
     expected_pokemon_count = 1126
     pokemon_count = len(pokemon_api_client.get_all_pokemon_names())
     assert pokemon_count == expected_pokemon_count
+
 
 @pytest.mark.skip
 def test_pokemon_name_contains_at_and_double_a(pokemon_api_client):
@@ -17,6 +19,7 @@ def test_pokemon_name_contains_at_and_double_a(pokemon_api_client):
     matches = pokemon_api_client.get_filtered_first_generation_pokemon_names_matches()
     expected_matches = 1
     assert matches == expected_matches
+
 
 @pytest.mark.skip
 def test_raichu_compatible_species(pokemon_api_client):
@@ -29,6 +32,7 @@ def test_raichu_compatible_species(pokemon_api_client):
         target_pokemon)
     expected_egg_groups = 2
     assert egg_groups == expected_egg_groups
+
 
 @pytest.mark.skip
 def test_smallest_and_biggest_pokemon(pokemon_api_client):
