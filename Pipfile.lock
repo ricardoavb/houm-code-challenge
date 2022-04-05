@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "dc040e2b783445519741eaa7bf557779162f0efe26569ebac0bd2eb2eca15205"
+            "sha256": "610a61969b324b577a1708013793d1cc027001f7ffadb1e4345833f77dd2c7ce"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -54,6 +54,13 @@
             "markers": "sys_platform == 'win32'",
             "version": "==0.4.4"
         },
+        "execnet": {
+            "hashes": [
+                "sha256:8f694f3ba9cc92cab508b152dcfe322153975c29bda272e2fd7f3f00f36e47c5",
+                "sha256:a295f7cc774947aac58dde7fdc85f4aa00c42adf5d8f5468fc630c1acf30a142"
+            ],
+            "version": "==1.9.0"
+        },
         "idna": {
             "hashes": [
                 "sha256:84d9dd047ffa80596e0f246e2eab0b391788b0503584e8945f2368256d2735ff",
@@ -104,6 +111,21 @@
             ],
             "index": "pypi",
             "version": "==7.1.1"
+        },
+        "pytest-forked": {
+            "hashes": [
+                "sha256:8b67587c8f98cbbadfdd804539ed5455b6ed03802203485dd2f53c1422d7440e",
+                "sha256:bbbb6717efc886b9d64537b41fb1497cfaf3c9601276be8da2cccfea5a3c8ad8"
+            ],
+            "version": "==1.4.0"
+        },
+        "pytest-xdist": {
+            "hashes": [
+                "sha256:4580deca3ff04ddb2ac53eba39d76cb5dd5edeac050cb6fbc768b0dd712b4edf",
+                "sha256:6fe5c74fec98906deb8f2d2b616b5c782022744978e7bd4695d39c8f42d0ce65"
+            ],
+            "index": "pypi",
+            "version": "==2.5.0"
         },
         "requests": {
             "hashes": [
