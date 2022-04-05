@@ -12,7 +12,7 @@ class PokemonApiClient:
         response = requests.get(resource)
         response_data = response.json()
         pokemon_data = response_data['results']
-       
+
         while response_data['next']:
             response_data = requests.get(response_data['next']).json()
             pokemon_data.extend(response_data['results'])
@@ -22,7 +22,6 @@ class PokemonApiClient:
 
         pokemon_names = list(map(map_criteria, pokemon_data))
         return pokemon_names
-
 
     def get_first_generation_pokemon_names(self):
         """
